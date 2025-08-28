@@ -1,0 +1,237 @@
+.dashboard {
+  padding: 0;
+}
+
+.dashboard-header {
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #F1F1F1;
+}
+
+.dashboard-header h2 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #2D3748;
+  margin-bottom: 0.25rem;
+}
+
+.dashboard-header p {
+  color: #718096;
+  font-size: 0.9rem;
+}
+
+.metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.metric-card {
+  background: #FAFAFA;
+  padding: 1.5rem;
+  border-radius: 16px;
+  border: 1px solid #F1F1F1;
+}
+
+.metric-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.metric-header h3 {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #718096;
+}
+
+.metric-budget {
+  background: #FFFFFF;
+  padding: 0.25rem 0.5rem;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #2D3748;
+  border: 1px solid #E2E8F0;
+}
+
+.metric-amount {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #2D3748;
+  margin-bottom: 0.25rem;
+}
+
+.metric-subtitle {
+  font-size: 0.9rem;
+  color: #718096;
+  margin-bottom: 1rem;
+}
+
+.progress-container {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.progress-bar {
+  flex: 1;
+  height: 6px;
+  background: #E2E8F0;
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  border-radius: 3px;
+  transition: width 0.3s ease;
+}
+
+.spending-fill {
+  background: linear-gradient(90deg, #FFD8A9, #FFC085);
+}
+
+.savings-fill {
+  background: linear-gradient(90deg, #B5EAD7, #A3E0C6);
+}
+
+.investment-fill {
+  background: linear-gradient(90deg, #A3D8FF, #8BC9FF);
+}
+
+.progress-percentage {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #2D3748;
+  min-width: 40px;
+  text-align: right;
+}
+
+.category-section, .recent-expenses {
+  margin-bottom: 2rem;
+}
+
+.category-section h3, .recent-expenses h3 {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #2D3748;
+  margin-bottom: 1rem;
+}
+
+.category-grid {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.category-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem;
+  background: #FAFAFA;
+  border-radius: 8px;
+  border: 1px solid #F1F1F1;
+}
+
+.category-color {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.category-info {
+  flex: 1;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.category-name {
+  font-size: 0.9rem;
+  color: #2D3748;
+  font-weight: 500;
+}
+
+.category-amount {
+  font-size: 0.9rem;
+  color: #2D3748;
+  font-weight: 600;
+}
+
+.category-percentage {
+  font-size: 0.8rem;
+  color: #718096;
+  font-weight: 500;
+  min-width: 40px;
+  text-align: right;
+}
+
+.expenses-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.expense-item {
+  padding: 0.75rem;
+  background: #FAFAFA;
+  border-radius: 8px;
+  border: 1px solid #F1F1F1;
+}
+
+.expense-main {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.25rem;
+}
+
+.expense-desc {
+  font-size: 0.9rem;
+  color: #2D3748;
+  font-weight: 500;
+}
+
+.expense-amount {
+  font-size: 0.9rem;
+  color: #2D3748;
+  font-weight: 600;
+}
+
+.expense-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.expense-category {
+  font-size: 0.8rem;
+  color: #718096;
+  background: #FFFFFF;
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+  border: 1px solid #E2E8F0;
+}
+
+.expense-date {
+  font-size: 0.8rem;
+  color: #718096;
+}
+
+@media (max-width: 768px) {
+  .metrics-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .dashboard-header h2 {
+    font-size: 1.25rem;
+  }
+  
+  .metric-amount {
+    font-size: 1.5rem;
+  }
+}

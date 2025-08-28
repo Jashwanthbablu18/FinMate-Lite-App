@@ -1,0 +1,16 @@
+.footer {
+  margin-top: auto;
+  padding: 1rem 0;
+  border-top: 1px solid #dee2e6;
+  background-color: #ffffff;
+}
+
+.footer-container {
+  text-align: center;
+  font-size: 0.875rem; /* Equivalent to "small" */
+  color: #6c757d;       /* Bootstrap's text-muted */
+}
+
+.heart {
+  color: #dc3545;       /* Bootstrap's text-danger */
+}

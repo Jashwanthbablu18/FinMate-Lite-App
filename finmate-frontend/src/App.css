@@ -1,0 +1,225 @@
+/* ===== BASE STYLES ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', sans-serif;
+  background: #FAFAFA;
+  color: #2D3748;
+  line-height: 1.6;
+}
+
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ===== HEADER ===== */
+.app-header {
+  background: #FFFFFF;
+  border-bottom: 1px solid #E2E8F0;
+  padding: 0.75rem 2rem;   /* reduce vertical padding */
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  display: flex;
+  align-items: center;     /* centers logo vertically */
+  justify-content: center; /* centers everything horizontally */
+}
+
+.header-content {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.app-header h1 {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #2D3748;
+  letter-spacing: -0.5px;
+  margin-bottom: 0.25rem;
+}
+
+.app-header p {
+  color: #718096;
+  font-size: 0.9rem;
+  font-weight: 400;
+}
+
+/* ===== MAIN LAYOUT ===== */
+.app-main {
+  flex: 1;
+  padding: 2rem;
+}
+
+.layout-grid {
+  display: grid;
+  grid-template-columns: 320px 1fr 320px;
+  gap: 2rem;
+  max-width: 1400px;
+  margin: 0 auto;
+  min-height: calc(100vh - 120px);
+}
+
+/* ===== SIDEBARS ===== */
+.sidebar, .insights-sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* ===== CARDS ===== */
+.salary-card, .quick-actions {
+  background: #FFFFFF;
+  padding: 1.5rem;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  border: 1px solid #F1F1F1;
+}
+
+.salary-card h3, .quick-actions h3 {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #718096;
+  margin-bottom: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.salary-amount {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #2D3748;
+  margin-bottom: 1rem;
+}
+
+.change-btn {
+  background: #A3D8FF;
+  color: #2D3748;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.change-btn:hover {
+  background: #8BC9FF;
+  transform: translateY(-1px);
+}
+
+/* ===== QUICK ACTIONS ===== */
+.quick-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.action-btn {
+  padding: 0.75rem 1rem;
+  border: none;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.action-btn.save {
+  background: #B5EAD7;
+  color: #2D3748;
+}
+
+.action-btn.save:hover {
+  background: #A3E0C6;
+  transform: translateY(-1px);
+}
+
+.action-btn.invest {
+  background: #FFD8A9;
+  color: #2D3748;
+}
+
+.action-btn.invest:hover {
+  background: #FFCD91;
+  transform: translateY(-1px);
+}
+
+/* ===== MAIN CONTENT ===== */
+.main-content {
+  background: #FFFFFF;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  border: 1px solid #F1F1F1;
+  padding: 2rem;
+}
+
+/* ===== RESPONSIVE DESIGN ===== */
+@media (max-width: 1200px) {
+  .layout-grid {
+    grid-template-columns: 280px 1fr;
+  }
+  
+  .insights-sidebar {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 768px) {
+  .layout-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .app-main {
+    padding: 1rem;
+  }
+  
+  .sidebar, .insights-sidebar {
+    order: 2;
+  }
+  
+  .main-content {
+    order: 1;
+  }
+}
+
+.logo-title {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem; /* space between logo and text */
+}
+
+.app-logo {
+  height: 90px;       /* larger, good visibility on desktop */
+  width: auto;        /* auto keeps aspect ratio */
+  max-width: 220px;   /* prevents it from becoming too wide */
+  object-fit: contain;
+}
+
+
+
+@media (max-width: 480px) {
+
+  .app-logo {
+  height: 120px;   /* adjust size as needed */
+  width: 190px;
+  object-fit: contain;
+  }
+  
+  .app-header {
+    padding: 1rem;
+  }
+  
+  .app-header h1 {
+    font-size: 1.5rem;
+  }
+  
+  .salary-amount {
+    font-size: 1.5rem;
+  }
+}
