@@ -1,0 +1,12 @@
+{
+  "name": "finmate-lite-app",
+  "private": true,
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "postinstall": "npm --prefix finmate-frontend install && npm --prefix finmate-backend install",
+    "build": "npm --prefix finmate-frontend run build",
+    "start": "node finmate-backend/server.js"
+  }
+}

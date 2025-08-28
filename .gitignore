@@ -1,0 +1,5 @@
+node_modules
+finmate-frontend/node_modules
+finmate-backend/node_modules
+finmate-frontend/dist
+.env
