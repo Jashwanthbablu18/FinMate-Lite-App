@@ -5,7 +5,7 @@
     "node": ">=18"
   },
   "scripts": {
-    "postinstall": "npm --prefix finmate-frontend install && npm --prefix finmate-backend install",
+    "postinstall": "npm --prefix finmate-frontend install --include=dev && npm --prefix finmate-backend install",
     "build": "npm --prefix finmate-frontend run build",
     "start": "node finmate-backend/server.js"
   }
