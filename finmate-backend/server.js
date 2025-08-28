@@ -1,48 +1,51 @@
-// server.js
-import dotenv from "dotenv";
-dotenv.config(); // MUST run before importing/initializing any modules that depend on env
-
+// finmate-backend/server.js
 import express from "express";
+import path from "path";
+import { fileURLToPath } from "url";
+import dotenv from "dotenv";
 import cors from "cors";
 
+// Load environment variables
+dotenv.config();
+
+// Helpers to handle ES module paths
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
 const app = express();
-app.use(express.json({ limit: "1mb" }));
+const PORT = process.env.PORT || 10000;
 
-// CORS: allow Vite dev server and optional production origin
-const allowList = [
-  "http://localhost:5173",        // Vite dev server
-  process.env.CORS_ORIGIN         // production frontend origin (optional)
-].filter(Boolean);
+// Middleware
+app.use(cors());
+app.use(express.json());
 
-app.use(cors({
-  origin: (origin, callback) => {
-    if (!origin) return callback(null, true); // allow non-browser tools
-    if (allowList.includes(origin)) return callback(null, true);
-    return callback(new Error("CORS policy: Origin not allowed"), false);
-  },
-  credentials: true
-}));
+// =========================
+// 🔹 Example API route
+// =========================
+app.get("/api/health", (req, res) => {
+  res.json({ status: "✅ Backend running", openaiKeyLoaded: !!process.env.OPENAI_API_KEY });
+});
 
-app.get("/health", (req, res) => res.json({ status: "ok" }));
+// TODO: Add your other API routes here
+// Example: app.use("/api/expenses", expensesRouter);
 
-// Load routes AFTER dotenv.config() so they can safely read process.env
-const start = async () => {
-  try {
-    const module = await import("./routes/openai.js");
-    // openai.js exports a factory function that returns an Express router
-    const createOpenAIRouter = module.default;
-    const openaiRouter = createOpenAIRouter();
-    app.use("/api", openaiRouter);
+// =========================
+// 🔹 Serve Frontend (React)
+// =========================
+const frontendPath = path.join(__dirname, "../finmate-frontend/dist");
 
-    const PORT = Number(process.env.PORT) || 5001;
-    app.listen(PORT, () => {
-      console.log(`🚀 FinMate backend running on port ${PORT}`);
-      console.log("🔐 OPENAI_API_KEY loaded?", !!process.env.OPENAI_API_KEY);
-    });
-  } catch (err) {
-    console.error("Failed to start server:", err);
-    process.exit(1);
-  }
-};
+// Serve static frontend files
+app.use(express.static(frontendPath));
 
-start();
+// Catch-all route → React handles frontend routing
+app.get("*", (req, res) => {
+  res.sendFile(path.join(frontendPath, "index.html"));
+});
+
+// =========================
+// 🔹 Start server
+// =========================
+app.listen(PORT, () => {
+  console.log(`🚀 FinMate backend running on port ${PORT}`);
+  console.log(`🔐 OPENAI_API_KEY loaded? ${!!process.env.OPENAI_API_KEY}`);
+});
