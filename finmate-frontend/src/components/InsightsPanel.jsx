@@ -3,10 +3,8 @@ import React, { useState } from "react";
 import axios from "axios";
 import "./InsightsPanel.css";
 
-const API_BASE = import.meta.env.VITE_API_URL || "http://localhost:5001/api";
-
-console.log("API_BASE is:", API_BASE);
-
+// Default API base: production uses relative `/api`
+const API_BASE = import.meta.env.VITE_API_URL || "/api";
 
 const InsightsPanel = ({ salary, expenses, savings, investments }) => {
   const [insights, setInsights] = useState("");
@@ -30,10 +28,10 @@ const InsightsPanel = ({ salary, expenses, savings, investments }) => {
 
       const response = await axios.post(`${API_BASE}/insights`, payload, {
         headers: { "Content-Type": "application/json" },
-        timeout: 20000
+        timeout: 20000,
       });
 
-      setInsights(response.data?.insight || "");
+      setInsights(response.data?.insight || "No insights generated.");
     } catch (err) {
       console.error("Insights error:", err);
       if (err?.response?.data?.message) setError(err.response.data.message);
