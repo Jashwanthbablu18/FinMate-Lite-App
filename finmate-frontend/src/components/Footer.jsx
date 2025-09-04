@@ -7,7 +7,7 @@ export default function Footer() {
   return (
     <footer className="footer">
       <div className="footer-container">
-        Made with <span className="heart"> ❤️ </span> by <a href='https://jashwanths-portfolio.onrender.com/'><strong>Jashwanth N</strong></a> — FinMate - Lite · © {year}
+        Made with <span className="heart"> ❤️ </span> by <a href='https://jashwanths-portfolio.onrender.com/' target='blank'><strong>Jashwanth N</strong></a> — FinMate - Lite · © {year}
       </div>
     </footer>
   );
